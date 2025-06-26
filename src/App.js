@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { css } from "@emotion/css";
 
 import Products from "./Products/Products";
@@ -24,7 +29,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Products />} />
             <Route path="/admin" element={<Admin />} />
-            <Route path="*" element={<div>Not Found</div>} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
       </Router>
