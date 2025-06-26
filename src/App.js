@@ -31,8 +31,8 @@ const App = () => {
           <Nav />
           <Routes>
             <Route path="/" element={<Products />}>
-              <Route path="/" element={<ProductsIndex />} />
-              {/* <Route path="/list" element={<ProductsIndex />} /> */}
+              {/* <Route path="/" element={<ProductsIndex />} /> */}
+              <Route path="/list" element={<ProductsIndex />} />
             </Route>
             <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<Navigate to="/" />} />
