@@ -19,9 +19,7 @@ const NavStyles = css`
 const Nav = () => (
   <nav className={NavStyles}>
     <NavLink to="/">Products</NavLink>
-    <NavLink to="/admin" activeStyle={{ fontStyle: "italic", fontWeight: 900 }}>
-      Admin
-    </NavLink>
+    <NavLink to="/admin">Admin</NavLink>
   </nav>
 );
 
