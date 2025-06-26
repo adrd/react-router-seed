@@ -13,7 +13,7 @@ const ProductStyles = css`
 
 const Products = () => (
   <div className={ProductStyles}>
-    <img src="/assets/img/logo.svg" alt="Ultimate Burgers" />
+    <img src="/assets/img/logo.svg" alt="Ultimate Burgers" className="Logo" />
     <Outlet />
   </div>
 );
