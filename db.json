@@ -47,6 +47,12 @@
       "name": "Wild Water",
       "description": "Spring water, wild and watery.",
       "price": 299
+    },
+    {
+      "id": "sFOlD71",
+      "name": "test new product",
+      "price": 101,
+      "description": "another description"
     }
   ]
 }

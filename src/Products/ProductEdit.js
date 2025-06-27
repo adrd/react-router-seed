@@ -46,7 +46,7 @@ const ProductEditStyles = css`
   }
 `;
 
-const ProductEdit = () => {
+const ProductEdit = ({ isEdit }) => {
   console.log("ProductEdit component start executing...");
 
   const { id } = useParams();
@@ -54,12 +54,15 @@ const ProductEdit = () => {
   const [form, setForm] = useState(null);
 
   useEffect(() => {
-    setForm({
-      id: "",
-      name: "",
-      price: 0,
-      description: "",
-    });
+    if (!isEdit) {
+      setForm({
+        id: "",
+        name: "",
+        price: 0,
+        description: "",
+      });
+      return;
+    }
 
     (async () => {
       console.log("retrieveProduct function called...");
@@ -162,29 +165,36 @@ const ProductEdit = () => {
         value={form.description}
         onChange={({ target }) => updateField(target)}
       />
-      <button
-        type="button"
-        className="ProductEdit-Button"
-        onClick={handleCreate}
-      >
-        Create
-      </button>
 
-      <button
-        type="button"
-        className="ProductEdit-Button"
-        onClick={handleUpdate}
-      >
-        Update
-      </button>
+      {!isEdit && (
+        <button
+          type="button"
+          className="ProductEdit-Button"
+          onClick={handleCreate}
+        >
+          Create
+        </button>
+      )}
 
-      <button
-        type="button"
-        className="ProductEdit-Button"
-        onClick={handleDelete}
-      >
-        Delete
-      </button>
+      {isEdit && (
+        <button
+          type="button"
+          className="ProductEdit-Button"
+          onClick={handleUpdate}
+        >
+          Update
+        </button>
+      )}
+
+      {isEdit && (
+        <button
+          type="button"
+          className="ProductEdit-Button"
+          onClick={handleDelete}
+        >
+          Delete
+        </button>
+      )}
     </form>
   );
 };
