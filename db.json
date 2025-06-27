@@ -47,6 +47,12 @@
       "name": "Wild Water",
       "description": "Spring water, wild and watery.",
       "price": 299
+    },
+    {
+      "id": "kRcgHOv",
+      "name": "test pizza",
+      "price": 120,
+      "description": "big pizza"
     }
   ]
 }
