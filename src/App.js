@@ -9,8 +9,8 @@ import { css } from "@emotion/css";
 
 import Nav from "./Common/Nav";
 import Products from "./Products/Products";
-import Product from "./Products/Product";
-import ProductsIndex from "./Products/ProductsIndex";
+// import Product from "./Products/Product";
+// import ProductsIndex from "./Products/ProductsIndex";
 import Admin from "./Admin/Admin";
 
 const AppStyles = css`
@@ -31,11 +31,13 @@ const App = () => {
         <div className="Container">
           <Nav />
           <Routes>
-            <Route path="/" element={<Products />}>
+            <Route path="/*" element={<Products />} />
+            {/* <Route path="/products/*" element={<Products />} /> */}
+            {/* <Route path="/" element={<Products />}>
               <Route path="/" element={<ProductsIndex />} />
-              {/* <Route path="/list" element={<ProductsIndex />} /> */}
+              <Route path="/list" element={<ProductsIndex />} />
               <Route path="/:id" element={<Product />} />
-            </Route>
+            </Route> */}
             <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
