@@ -28,8 +28,8 @@ const AppStyles = css`
 const App = () => {
   console.log("App component start executing...");
 
-  // const [authenticated] = useState(false);
-  const [authenticated] = useState(true);
+  const [authenticated] = useState(false);
+  // const [authenticated] = useState(true);
 
   return (
     <div className={AppStyles}>
@@ -44,7 +44,7 @@ const App = () => {
               <Route path="/list" element={<ProductsIndex />} />
               <Route path="/:id" element={<Product />} />
             </Route> */}
-            <Route
+            {/* <Route
               path="/admin"
               element={
                 <ProtectedRoute
@@ -53,7 +53,8 @@ const App = () => {
                   redirectTo="/"
                 />
               }
-            />
+            /> */}
+            <Route path="/admin/*" element={<Admin />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>

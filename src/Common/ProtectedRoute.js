@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import React from "react";
+import { Navigate, Route } from "react-router-dom";
 
 const ProtectedRoute = ({ element, authenticated, redirectTo, ...rest }) => {
   console.log("ProtectedRoute start executing...");
