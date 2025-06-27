@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -8,7 +8,7 @@ import {
 import { css } from "@emotion/css";
 
 import Nav from "./Common/Nav";
-import ProtectedRoute from "./Common/ProtectedRoute";
+// import ProtectedRoute from "./Common/ProtectedRoute";
 import Products from "./Products/Products";
 // import Product from "./Products/Product";
 // import ProductsIndex from "./Products/ProductsIndex";
@@ -28,7 +28,7 @@ const AppStyles = css`
 const App = () => {
   console.log("App component start executing...");
 
-  const [authenticated] = useState(false);
+  // const [authenticated] = useState(false);
   // const [authenticated] = useState(true);
 
   return (
