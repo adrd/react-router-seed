@@ -36,7 +36,7 @@ const ProductsIndex = () => {
   // console.log(location);
 
   const { state } = useLocation();
-  console.log(state);
+  console.log("Location, state =", state);
 
   const [products, setProducts] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -55,11 +55,42 @@ const ProductsIndex = () => {
       console.log("ProductsIndex listProducts() start executing...");
       const data = await listProducts();
 
-      console.log(data);
+      console.log("listProducts() data = ", data);
 
-      setProducts(data);
+      const params = Object.fromEntries([...searchParams]);
+
+      sortProductsFromParams(data, params);
     })();
   }, []);
+
+  const sortProductsFromParams = (data, params) => {
+    console.log("sortProductsFromParams start executing...");
+    console.log("data = ", data);
+    console.log("params = ", params);
+
+    if (!Object.keys(params).length) {
+      setProducts(data);
+      return;
+    }
+
+    const sorted = [...data].sort((x, y) => {
+      const { sort, order } = params;
+
+      switch (order) {
+        case "ascending": {
+          return x[sort] > y[sort] ? 1 : -1;
+        }
+        case "descending": {
+          return x[sort] < y[sort] ? 1 : -1;
+        }
+        default: {
+          return 0;
+        }
+      }
+    });
+
+    setProducts(sorted);
+  };
 
   const updateParams = (e) => {
     console.log("updateParams() start executing...");
@@ -74,6 +105,7 @@ const ProductsIndex = () => {
     console.log("newParams = ", newParams);
 
     setSearchParams(newParams);
+    sortProductsFromParams(products, newParams);
   };
 
   if (products === null) {
