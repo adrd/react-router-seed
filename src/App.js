@@ -1,14 +1,13 @@
-import React from "react";
+import React, { lazy } from "react";
 import { BrowserRouter as Router, Navigate, useRoutes } from "react-router-dom";
 import { css } from "@emotion/css";
 
 import Nav from "./Common/Nav";
 import ScrollToTop from "./Common/ScrollToTop";
-// import ProtectedRoute from "./Common/ProtectedRoute";
-import Products from "./Products/Products";
-// import Product from "./Products/Product";
-// import ProductsIndex from "./Products/ProductsIndex";
-import Admin from "./Admin/Admin";
+import Loadable from "./Common/Loadable";
+
+const Products = Loadable(lazy(() => import("./Products/Products")));
+const Admin = Loadable(lazy(() => import("./Admin/Admin")));
 
 const AppStyles = css`
   margin: 50px auto;

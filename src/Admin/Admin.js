@@ -4,9 +4,10 @@ import { css } from "@emotion/css";
 
 // import ProductsIndex from "../Products/ProductsIndex";
 // import ProductEdit from "../Products/ProductEdit";
+import Loadable from "../Common/Loadable";
 
-const ProductsIndex = lazy(() => import("../Products/ProductsIndex"));
-const ProductEdit = lazy(() => import("../Products/ProductEdit"));
+const ProductsIndex = Loadable(lazy(() => import("../Products/ProductsIndex")));
+const ProductEdit = Loadable(lazy(() => import("../Products/ProductEdit")));
 
 const AdminStyles = css`
   .Admin {
