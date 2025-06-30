@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Navigate, useRoutes } from "react-router-dom";
 import { css } from "@emotion/css";
 
 import Nav from "./Common/Nav";
@@ -32,37 +27,39 @@ const App = () => {
   // const [authenticated] = useState(false);
   // const [authenticated] = useState(true);
 
+  const routes = useRoutes([
+    {
+      path: "/*",
+      element: <Products />,
+    },
+    {
+      path: "/admin/*",
+      element: <Admin />,
+      // element: authenticated ? <Admin /> : <Navigate to="/" />,
+    },
+    {
+      path: "*",
+      element: <Navigate to="/" />,
+    },
+  ]);
+
+  return routes;
+};
+
+const AppWrapper = () => {
+  console.log("AppWrapper component start executing...");
+
   return (
     <div className={AppStyles}>
       <Router>
         <ScrollToTop />
         <div className="Container">
           <Nav />
-          <Routes>
-            <Route path="/*" element={<Products />} />
-            {/* <Route path="/products/*" element={<Products />} /> */}
-            {/* <Route path="/" element={<Products />}>
-              <Route path="/" element={<ProductsIndex />} />
-              <Route path="/list" element={<ProductsIndex />} />
-              <Route path="/:id" element={<Product />} />
-            </Route> */}
-            {/* <Route
-              path="/admin"
-              element={
-                <ProtectedRoute
-                  element={<Admin />}
-                  authenticated={authenticated}
-                  redirectTo="/"
-                />
-              }
-            /> */}
-            <Route path="/admin/*" element={<Admin />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
+          <App />
         </div>
       </Router>
     </div>
   );
 };
 
-export default App;
+export default AppWrapper;
